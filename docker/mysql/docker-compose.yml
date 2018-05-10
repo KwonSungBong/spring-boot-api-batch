@@ -1,0 +1,14 @@
+version: '2.1'
+
+services:
+  mysqldb2:
+    image: mysql:5
+    ports:
+      - 3308:3306
+    volumes:
+      - ./etc/my.cnf:/etc/mysql/conf.d/my.cnf
+      - ./init:/docker-entrypoint-initdb.d/:ro
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: test_test
+
