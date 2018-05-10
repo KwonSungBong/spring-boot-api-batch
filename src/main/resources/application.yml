@@ -12,3 +12,7 @@ spring:
     username: root
     password: 'password'
     driver-class-name: com.mysql.jdbc.Driver
+
+  batch:
+    initialize-schema: always
+

@@ -1,7 +1,8 @@
 package com.example.demo;
 
+import com.example.demo.component.BatchComponent;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.batch.core.configuration.annotation.EnableBatchProcessing;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -11,12 +12,14 @@ import javax.annotation.PreDestroy;
 
 @Slf4j
 @SpringBootApplication
-@EnableBatchProcessing
-public class DemoApplication implements CommandLineRunner {
+public class Application implements CommandLineRunner {
 
     public static void main(String[] args) {
-        SpringApplication.run(DemoApplication.class, args);
+        SpringApplication.run(Application.class, args);
     }
+
+    @Autowired
+    private BatchComponent batchComponent;
 
     @PostConstruct
     public void onInit() {
@@ -30,7 +33,9 @@ public class DemoApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        log.info("run {}", args);
+        log.info("run. args length : {}, args : {}", args.length, String.join(",", args));
+
+        batchComponent.task();
     }
 
 }
