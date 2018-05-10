@@ -35,7 +35,7 @@ public class Application implements CommandLineRunner {
     public void run(String... args) throws Exception {
         log.info("run. args length : {}, args : {}", args.length, String.join(",", args));
 
-        batchComponent.task();
+//        batchComponent.task();
     }
 
 }

@@ -68,7 +68,7 @@ public class BatchConfig {
     @Bean
     public JpaPagingItemReader<Program> reader() {
         JpaPagingItemReader<Program> reader = new JpaPagingItemReader<>();
-        reader.setQueryString("select p from Program p");
+        reader.setQueryString("select p from Program p order by p.id");
         reader.setEntityManagerFactory(entityManagerFactory);
         reader.setPageSize(CHUNK_AND_PAGE_SIZE);
         return reader;
