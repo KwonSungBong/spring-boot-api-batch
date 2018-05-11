@@ -17,3 +17,4 @@ http://www.chidoo.me/index.php/2017/12/19/spring-batch-parallel-execution/
 
 
 
+http://knes1.github.io/blog/2015/2015-10-19-streaming-mysql-results-using-java8-streams-and-spring-data.html

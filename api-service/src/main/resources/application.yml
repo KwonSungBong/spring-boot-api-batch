@@ -1,0 +1,15 @@
+spring:
+  profiles.active: local
+  jpa:
+    hibernate:
+      ddl-auto: none
+    generate-ddl: true
+    show-sql: true
+    database-platform: org.hibernate.dialect.MySQL5Dialect
+
+  datasource:
+    url: jdbc:mysql://localhost:3308/test_test?characterEncoding=utf8&useUnicode=true&autoReconnect=true&zeroDateTimeBehavior=convertToNull
+    username: root
+    password: 'password'
+    driver-class-name: com.mysql.jdbc.Driver
+

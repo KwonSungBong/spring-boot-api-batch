@@ -1,1 +1,4 @@
 rootProject.name = 'demo'
+
+include 'batch-service'
+include 'api-service'
