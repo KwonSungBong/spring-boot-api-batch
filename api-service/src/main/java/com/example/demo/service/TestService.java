@@ -13,6 +13,9 @@ import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.ssl.SSLContextBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.ResponseEntity;
+import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
@@ -90,6 +93,22 @@ public class TestService {
         String response = IOUtils.toString(client.execute(httpGet).getEntity().getContent(), StandardCharsets.UTF_8.name());
 
         return response;
+    }
+
+    public void test5() {
+        String url = "https://jsonplaceholder.typicode.com/users";
+
+        CloseableHttpClient httpClient
+                = HttpClients.custom()
+                .setSSLHostnameVerifier(new NoopHostnameVerifier())
+                .build();
+        HttpComponentsClientHttpRequestFactory requestFactory
+                = new HttpComponentsClientHttpRequestFactory();
+        requestFactory.setHttpClient(httpClient);
+
+        ResponseEntity<String> response = new RestTemplate(requestFactory).exchange(url, HttpMethod.GET, null, String.class);
+
+        log.debug("result : {}", "TSET");
     }
 
 }

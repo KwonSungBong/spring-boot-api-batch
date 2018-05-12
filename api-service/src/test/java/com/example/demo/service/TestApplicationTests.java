@@ -33,4 +33,9 @@ public class TestApplicationTests {
         testService.test4();
     }
 
+    @Test
+    public void TEST5() {
+        testService.test5();
+    }
+
 }
