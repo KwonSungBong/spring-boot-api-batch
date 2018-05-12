@@ -17,7 +17,11 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import javax.net.ssl.SSLContext;
+import java.io.IOException;
 import java.nio.charset.StandardCharsets;
+import java.security.KeyManagementException;
+import java.security.KeyStoreException;
+import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -70,6 +74,14 @@ public class TestService {
     public void test4() throws Exception {
         String url = "https://jsonplaceholder.typicode.com/users";
 
+        String response = getHttp(url);
+        ObjectMapper mapper = new ObjectMapper();
+        User[] responseUsers = mapper.readValue(response, new TypeReference<User[]>(){});
+
+        log.debug("result : {}", "TSET");
+    }
+
+    public String getHttp(String url) throws KeyStoreException, NoSuchAlgorithmException, IOException, KeyManagementException {
         SSLContext sslContext = new SSLContextBuilder().loadTrustMaterial(null, (certificate, authType) -> true).build();
         CloseableHttpClient client = HttpClients.custom().setSSLContext(sslContext).setSSLHostnameVerifier(new NoopHostnameVerifier()).build();
         HttpGet httpGet = new HttpGet(url);
@@ -77,10 +89,7 @@ public class TestService {
 
         String response = IOUtils.toString(client.execute(httpGet).getEntity().getContent(), StandardCharsets.UTF_8.name());
 
-        ObjectMapper mapper = new ObjectMapper();
-        User[] responseUsers = mapper.readValue(response, new TypeReference<User[]>(){});
-
-        log.debug("result : {}", "TSET");
+        return response;
     }
 
 }
