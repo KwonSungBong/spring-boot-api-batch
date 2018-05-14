@@ -10,6 +10,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.QueryHint;
+import java.util.List;
 import java.util.Set;
 import java.util.stream.Stream;
 
@@ -27,6 +28,10 @@ public interface ProgramRepository extends PagingAndSortingRepository<Program, S
     @Query(value = "SELECT * FROM program " +
             "ORDER BY RAND() limit :size", nativeQuery = true)
     Set<Program> findSet(@Param("size") int size);
+
+    @Query(value = "SELECT * FROM program " +
+            "ORDER BY RAND() limit :size", nativeQuery = true)
+    List<Program> findList(@Param("size") int size);
 
     @QueryHints(value = @QueryHint(name = HINT_FETCH_SIZE, value = "" + Integer.MIN_VALUE))
     @Query(value = "SELECT * FROM program " +

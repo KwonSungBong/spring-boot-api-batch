@@ -21,6 +21,7 @@ import org.springframework.web.client.RestTemplate;
 import javax.annotation.PostConstruct;
 import java.text.MessageFormat;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 @Slf4j
@@ -47,6 +48,11 @@ public class ApiTestService2 {
 
         this.restTemplate = new RestTemplate(requestFactory);
     }
+
+    public List<Program> findList(int size) {
+        return programRepository.findList(size);
+    }
+
 
     public List<ProgramResponseEntity> getProgramResponseEntityList(List<Program> programList) {
         return programList.stream().map(this::getProgramResponseEntity).collect(Collectors.toList());
