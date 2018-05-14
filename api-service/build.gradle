@@ -16,6 +16,7 @@ repositories {
 
 test {
     testLogging.showStandardStreams = true
+    systemProperty "testSize", System.getProperty("testSize")
 }
 
 dependencies {

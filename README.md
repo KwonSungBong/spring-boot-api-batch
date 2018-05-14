@@ -23,3 +23,8 @@ http://www.baeldung.com/httpclient-ssl
 
 
 https://stackoverflow.com/questions/9356543/logging-while-testing-through-gradle
+
+
+https://discuss.gradle.org/t/passing-gradle-project-properties-via-command-line-to-gradlerunner/19280/3
+
+

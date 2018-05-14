@@ -24,6 +24,10 @@ public class ApiTest2ApplicationTests {
 
     @Test
     public void TEST1() {
+        String argAssignDeviceSize = System.getProperty("assignDeviceSize");
+//        if(argAssignDeviceSize.isInteger()) assignDeviceSize = argAssignDeviceSize.toInteger();
+//        log.info("test assign device size : {}", assignDeviceSize);
+
         List<Program> programList = apiTestService.findList(size);
 
         List<ProgramResponseEntity> programResponseEntityList = apiTestService.getProgramResponseEntityList(programList);
