@@ -22,4 +22,4 @@ http://knes1.github.io/blog/2015/2015-10-19-streaming-mysql-results-using-java8-
 http://www.baeldung.com/httpclient-ssl
 
 
-
+https://stackoverflow.com/questions/9356543/logging-while-testing-through-gradle
