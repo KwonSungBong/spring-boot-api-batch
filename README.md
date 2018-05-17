@@ -29,3 +29,5 @@ https://discuss.gradle.org/t/passing-gradle-project-properties-via-command-line-
 
 
 List<Object> list = Collections.synchronizedList(new ArrayList<>());
+
+http://aroundck.tistory.com/3312
